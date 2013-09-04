@@ -1,5 +1,7 @@
 package frog.database;
 
+import java.util.Random;
+
 /**
  * Characteristic or qualitie that the individuals of a population possess, 
  * expressed in numerical form, and with values between two numbers.
@@ -45,6 +47,14 @@ public class Variable {
         this.min = min;
         this.max = max;
         this.partition = partition;
+    }
+    
+    public double range() {
+        return (this.max - this.min);
+    }
+    
+    public double random(Random rnd) {
+        return rnd.nextDouble() * this.range() + this.min;
     }
 
     @Override

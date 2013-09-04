@@ -30,7 +30,7 @@ public class TSKInference {
      * @return 
      */
     public static double[] inference(KnowledgeBase<TSKRule> kb, Data[] data, double[] input) {
-        int n_outputs = kb.rulebase.get(0).consequent.size();
+        int n_outputs = kb.database.outputs.length;
 
         double[] result = new double[n_outputs];
         double norm = 0.;

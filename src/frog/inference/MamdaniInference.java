@@ -25,7 +25,7 @@ public class MamdaniInference {
      * @return Crisp output value
      */
     public static double[] centerOfGravity(KnowledgeBase<MamdaniRule> kb, Data[] data) {
-        int n_outputs = kb.rulebase.get(0).consequent.size();
+        int n_outputs = kb.database.outputs.length;
         FuzzySet[][] output = new FuzzySet[n_outputs][kb.rulebase.size()];
 
         for (int i = 0; i < kb.rulebase.size(); i++) {

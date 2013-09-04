@@ -18,6 +18,4 @@ public class KnowledgeBase<T extends Rule> {
         this.database = database;
         this.rulebase = rulebase;
     }
-
-
 }
