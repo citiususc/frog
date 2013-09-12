@@ -38,6 +38,9 @@ public class Variable {
      */
     public Partition partition;
 
+    public Variable() {
+    }
+    
     public Variable(String name, double min, double max) {
         this(name, min, max, new Partition());
     }

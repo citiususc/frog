@@ -20,6 +20,11 @@ public class MamdaniRule implements Rule {
      * Array of consequent propositions.
      */
     public ArrayList<? extends LabelProposition> consequent;
+
+    public MamdaniRule() {
+        this(new ArrayList<Proposition>(), new ArrayList<LabelProposition>());
+    }
+    
     
     public MamdaniRule(ArrayList<? extends Proposition> ant, ArrayList<? extends LabelProposition> con) {
         this.antecedent = ant;

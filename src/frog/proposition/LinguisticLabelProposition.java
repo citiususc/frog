@@ -16,6 +16,10 @@ public class LinguisticLabelProposition implements LabelProposition {
 
     public int var;
     public int label;
+
+    public LinguisticLabelProposition() {
+        this(0, 0);
+    }
     
     public LinguisticLabelProposition(int var, int label) {
         this.var = var;

@@ -3,10 +3,15 @@ package frog.proposition;
 import frog.database.DataBase;
 import frog.database.SingleData;
 import frog.fuzzyset.FuzzySet;
+import frog.fuzzyset.Triangle;
 
 public class ApproximativeLabelProposition implements LabelProposition {
 
     public FuzzySet label;
+
+    public ApproximativeLabelProposition() {
+        this.label = new Triangle();
+    }
     
     public ApproximativeLabelProposition(FuzzySet label) {
         this.label = label;

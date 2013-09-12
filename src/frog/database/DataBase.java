@@ -15,6 +15,9 @@ public class DataBase {
             this.inputs = inputs;
             this.outputs = outputs;
     }
+
+    public DataBase() {
+    }
     
     /**
      * @return The number of input and output variables

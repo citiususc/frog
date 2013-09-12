@@ -6,8 +6,12 @@ package frog.fuzzyset;
  * any other point has a dof of 0.
  */
 public class Rectangle extends FuzzySet {
-    private double a;
-    private double b;
+    public double a;
+    public double b;
+
+    public Rectangle() {
+        this(0, 1, 1);
+    }
     
     public Rectangle(double a, double b) {
         this(a, b, 1.);

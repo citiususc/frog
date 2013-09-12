@@ -7,6 +7,7 @@ package frog.rulebase;
 import frog.proposition.Proposition;
 import frog.database.Data;
 import frog.database.DataBase;
+import frog.proposition.LabelProposition;
 import java.util.ArrayList;
 
 /**
@@ -25,6 +26,10 @@ public class TSKRule implements Rule {
      */
     public ArrayList<double[]> consequent;
 
+    public TSKRule() {
+        this(new ArrayList<Proposition>(), new ArrayList<double[]>());
+    }
+    
     public TSKRule(ArrayList<? extends Proposition> ant, ArrayList<double[]> con) {
             this.antecedent = ant;
             this.consequent = con;
