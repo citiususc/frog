@@ -21,9 +21,9 @@ public class Defuzzify {
         double den = 0.;
             
         for (FuzzySet set : sets) {
-            double cog = set.centerOfGravity();
-            num += cog * set.height;
-            den += set.height;
+    		double cog = set.centerOfGravity();
+        	num += cog * set.height;
+        	den += set.height;
         }
             
         if (den == 0) {

@@ -1,4 +1,6 @@
-/nbproject/private/
-/nbproject/
+/bin/
 /dist/
-/build/
+/dirty
+*~
+.*
+!.gitignore

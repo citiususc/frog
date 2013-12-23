@@ -16,7 +16,7 @@ public class KnowledgeBase<T extends Rule> {
 
     public KnowledgeBase() {
         this.database = new DataBase();
-        this.rulebase = new RuleBase();
+        this.rulebase = new RuleBase<>();
     }
 
     public KnowledgeBase(DataBase database, RuleBase<T> rulebase) {
