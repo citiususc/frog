@@ -8,7 +8,7 @@
   <build>
   	<sourceDirectory>src</sourceDirectory>
   	<testSourceDirectory>test</testSourceDirectory>
-  	<plugins>
+  	<pluginManagement>
   	<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -18,7 +18,7 @@
           <target>1.7</target>
         </configuration>
       </plugin>
-  	</plugins>
+  	</pluginManagement>
   		  
   </build>
 </project>

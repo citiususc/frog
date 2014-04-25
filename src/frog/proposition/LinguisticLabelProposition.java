@@ -26,12 +26,10 @@ public class LinguisticLabelProposition implements LabelProposition {
         this.label = label;
     }
     
-    @Override
     public double dof(SingleData data, DataBase db) {
         return db.get(var).partition.get(label).dof(data.value);
     }
     
-    @Override
     public FuzzySet getLabel(DataBase db) {
         return db.get(this.var).partition.get(label);
     }

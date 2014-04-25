@@ -7,5 +7,6 @@ import java.util.ArrayList;
 
  * @param <T> The type of the rules (Mamdani or TSK)
  */
+@SuppressWarnings("serial")
 public class RuleBase<T extends Rule> extends ArrayList<T> {
 }

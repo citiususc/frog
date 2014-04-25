@@ -5,6 +5,7 @@ import frog.database.Data;
 import frog.database.DataBase;
 import frog.fuzzyset.FuzzySet;
 import frog.proposition.LabelProposition;
+
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ public class MamdaniRule implements Rule {
     /**
      * Array of antecedent propositions.
      */
-    public ArrayList<? extends Proposition> antecedent;
+	public ArrayList<? extends Proposition> antecedent;
     
     /**
      * Array of consequent propositions.

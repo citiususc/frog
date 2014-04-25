@@ -17,12 +17,10 @@ public class ApproximativeLabelProposition implements LabelProposition {
         this.label = label;
     }
     
-    @Override
     public double dof(SingleData data, DataBase db) {
         return label.dof(data.value);
     }
     
-    @Override
     public FuzzySet getLabel(DataBase db) {
         return this.label;
     }
