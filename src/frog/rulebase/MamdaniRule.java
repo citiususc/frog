@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  * A rule whose antecedent and consequent are composed of linguistic variables.
  */
+@SuppressWarnings("rawtypes")
 public class MamdaniRule implements Rule {
     /**
      * Array of antecedent propositions.

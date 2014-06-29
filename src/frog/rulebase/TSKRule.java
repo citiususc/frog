@@ -4,16 +4,17 @@
  */
 package frog.rulebase;
 
-import frog.proposition.Proposition;
+import java.util.ArrayList;
+
 import frog.database.Data;
 import frog.database.DataBase;
-import frog.proposition.LabelProposition;
-import java.util.ArrayList;
+import frog.proposition.Proposition;
 
 /**
  * A rule whose antecedent is composed of linguistic variables and the 
  * consequent is represented by a function of the input variables.
  */
+@SuppressWarnings("rawtypes")
 public class TSKRule implements Rule {
     /**
      * Array of antecedent propositions
