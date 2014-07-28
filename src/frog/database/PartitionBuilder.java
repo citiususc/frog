@@ -257,8 +257,8 @@ public class PartitionBuilder {
 		for (int j = 0; j < k - 1; j++) {
 			p0[j][2] = u[j];
 			p0[j][3] = u[j];
-			p0[j + 1][0] = l[j];
-			p0[j + 1][1] = l[j];
+			p0[j + 1][0] = l[j+1];
+			p0[j + 1][1] = l[j+1];
 		}
 		p0[k - 1][2] = u[k - 1];
 		p0[k - 1][3] = u[k - 1] + 1e-3;
