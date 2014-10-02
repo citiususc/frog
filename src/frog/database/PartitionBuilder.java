@@ -212,12 +212,12 @@ public class PartitionBuilder {
 		 */
 		double[] tmp = new double[cuts.length];
 		for (int i = 0; i < cuts.length; i++) {
-			if (i == 0 || i == cuts.length-1 || alpha[i] == 0) {
+			if (i == 0 || i == cuts.length-1 || alpha[i-1] == 0) {
 				tmp[i] = cuts[i];
-			} else if (alpha[i] < 0 && i > 0) {
-				tmp[i] = cuts[i] + (cuts[i] - cuts[i-1]) * alpha[i];
-			} else if (alpha[i] > 0) {
-				tmp[i] = cuts[i] + (cuts[i+1] - cuts[i]) * alpha[i];
+			} else if (alpha[i-1] < 0) {
+				tmp[i] = cuts[i] + (cuts[i] - cuts[i-1]) * alpha[i-1];
+			} else if (alpha[i-1] > 0) {
+				tmp[i] = cuts[i] + (cuts[i+1] - cuts[i]) * alpha[i-1];
 			}
 		}
 		cuts = tmp;
