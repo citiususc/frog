@@ -301,4 +301,18 @@ public class PartitionBuilder {
 		return result;
 	}
 
+    public static Partition fromCutsDisplaced(double[] cuts, Variable var, double[] alpha) {
+        Partition result = fromCuts(cuts, var);
+
+        for (int i = 0; i < result.size(); i++) {
+            Trapezium fs = (Trapezium)result.get(i);
+            double displacement = (fs.d - fs.a) * 0.5 * alpha[i];
+            fs.a = fs.a + displacement;
+            fs.b = fs.b + displacement;
+            fs.c = fs.c + displacement;
+            fs.d = fs.d + displacement;
+        }
+
+        return result;
+    }
 }
