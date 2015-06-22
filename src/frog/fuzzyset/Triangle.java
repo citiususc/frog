@@ -52,6 +52,19 @@ public class Triangle extends FuzzySet {
     }
 
     @Override
+    public double[] getPoints() {
+        return new double[]{a, b, c};
+    }
+
+    @Override
+    public void setPoints(double[] points) {
+        assert points.length == 3;
+        this.a = points[0];
+        this.b = points[1];
+        this.c = points[2];
+    }
+
+    @Override
     public String toString() {
         return "[" + this.a + ", " + this.b + ", " + this.c + "]";
     }
@@ -65,5 +78,9 @@ public class Triangle extends FuzzySet {
             }
         }
         return false;
+    }
+
+    public String toJSON(){
+        return "[["+this.a+",0],["+this.b+","+this.height+"],["+this.c+",0]]";
     }
 }

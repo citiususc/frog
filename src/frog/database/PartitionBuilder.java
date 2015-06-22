@@ -158,7 +158,7 @@ public class PartitionBuilder {
 	 * @see #fromCuts(double[], frog.database.Variable, double, double)
 	 */
 	public static Partition fromCuts(double[] cuts, Variable var) {
-		return fromCuts(cuts, var, 0.5, 0);
+		return fromCuts(cuts, var, 1, 0);
 	}
 
 	/**

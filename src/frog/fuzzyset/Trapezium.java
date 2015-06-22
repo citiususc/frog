@@ -50,8 +50,25 @@ public class Trapezium extends FuzzySet {
 	}
 
 	@Override
+	public double[] getPoints() {
+		return new double[]{a, b, c, d};
+	}
+
+	@Override
+	public void setPoints(double[] points) {
+		assert points.length == 4;
+		this.a = points[0];
+		this.b = points[1];
+		this.c = points[2];
+        this.d = points[3];
+	}
+
+	@Override
 	public String toString() {
 		return "[" + this.a + ", " + this.b + ", " + this.c + ", " + this.d + "]";
 	}
 
+	public String toJSON(){
+		return "[["+this.a+",0],["+this.b+","+this.height+"],["+this.c+","+this.height+"],["+this.d+",0]]";
+	}
 }

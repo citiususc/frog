@@ -19,7 +19,7 @@ public class DataBase implements Serializable {
 
     public DataBase() {
     }
-    
+
     /**
      * @return The number of input and output variables
      */
@@ -52,6 +52,20 @@ public class DataBase implements Serializable {
     public String toString() {
         return "{Inputs: " + Arrays.toString(inputs) + ", Outputs: " + Arrays.toString(outputs) + "}";
     }
-        
-        
+
+    public Variable[] getInputs() {
+        return inputs;
+    }
+
+    public void setInputs(Variable[] inputs) {
+        this.inputs = inputs;
+    }
+
+    public Variable[] getOutputs() {
+        return outputs;
+    }
+
+    public void setOutputs(Variable[] outputs) {
+        this.outputs = outputs;
+    }
 }

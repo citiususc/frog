@@ -43,8 +43,24 @@ public class Rectangle extends FuzzySet {
     }
 
     @Override
+    public double[] getPoints() {
+        return new double[]{a, b};
+    }
+
+    @Override
+    public void setPoints(double[] points) {
+        assert points.length == 2;
+        this.a = points[0];
+        this.b = points[1];
+    }
+
+    @Override
     public String toString() {
         return "[" + this.a + ", " + this.b + "]";
+    }
+
+    public String toJSON(){
+        return "[["+this.a+","+this.height+"],["+this.b+","+this.height+"]]";
     }
         
         

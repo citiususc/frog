@@ -8,7 +8,7 @@ import frog.database.DataBase;
  * a certain degree.
  * @param <D> The type of input that is used in the proposition
  */
-public interface Proposition<D extends Data> {
+public interface Proposition<D> {
     /**
      * Degree of fullfilment of the proposition.
      * @param data Input data.

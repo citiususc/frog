@@ -4,6 +4,7 @@
  */
 package frog.rulebase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import frog.database.Data;
@@ -15,7 +16,7 @@ import frog.proposition.Proposition;
  * consequent is represented by a function of the input variables.
  */
 @SuppressWarnings("rawtypes")
-public class TSKRule implements Rule {
+public class TSKRule implements Rule, Serializable {
     /**
      * Array of antecedent propositions
      */
@@ -62,7 +63,7 @@ public class TSKRule implements Rule {
      * @param data Array of input data, one for each antecedent
      * @param db DataBase where the information of the fuzzy sets is located
      */
-    public double dof(Data[] data, DataBase db) {
+    public double dof(double[] data, DataBase db) {
         double min = Double.MAX_VALUE;
         for (int i = 0; i < this.antecedent.size(); i++) {
             double dof = this.antecedent.get(i).dof(data[i], db);
@@ -77,5 +78,21 @@ public class TSKRule implements Rule {
     @Override
     public String toString() {
             return "{A: " + this.antecedent + ", C: " + this.consequent + "}";
+    }
+
+    public ArrayList<? extends Proposition> getAntecedent() {
+        return antecedent;
+    }
+
+    public void setAntecedent(ArrayList<? extends Proposition> antecedent) {
+        this.antecedent = antecedent;
+    }
+
+    public ArrayList<double[]> getConsequent() {
+        return consequent;
+    }
+
+    public void setConsequent(ArrayList<double[]> consequent) {
+        this.consequent = consequent;
     }
 }

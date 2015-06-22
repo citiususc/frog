@@ -13,7 +13,7 @@ import frog.fuzzyset.FuzzySet;
  * (fuzzy set)
  * @author ismael.rodriguez
  */
-public interface LabelProposition extends Proposition<SingleData> {
+public interface LabelProposition extends Proposition<Double>  {
     /**
      * Returns the label that is indicated by this proposition
      * @param db DataBase where the information of the fuzzy sets is located

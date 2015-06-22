@@ -65,6 +65,52 @@ public class Variable implements Serializable {
     public String toString() {
         return name + " [" + min + ", " + max + "] " + partition; 
     }
-        
-        
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getMin() {
+        return min;
+    }
+
+    public void setMin(double min) {
+        this.min = min;
+    }
+
+    public double getMax() {
+        return max;
+    }
+
+    public void setMax(double max) {
+        this.max = max;
+    }
+
+    public double getNorm_mean() {
+        return norm_mean;
+    }
+
+    public void setNorm_mean(double norm_mean) {
+        this.norm_mean = norm_mean;
+    }
+
+    public double getNorm_std() {
+        return norm_std;
+    }
+
+    public void setNorm_std(double norm_std) {
+        this.norm_std = norm_std;
+    }
+
+    public Partition getPartition() {
+        return partition;
+    }
+
+    public void setPartition(Partition partition) {
+        this.partition = partition;
+    }
 }

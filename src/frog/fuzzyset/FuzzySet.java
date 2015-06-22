@@ -1,9 +1,11 @@
 package frog.fuzzyset;
- 
+
+import java.io.Serializable;
+
 /**
  * A set whose elements have degrees of membership.
  */
-public abstract class FuzzySet {
+public abstract class FuzzySet implements Serializable {
 	
     /**
      * The maximum degree of fullfilment that an element can have in this fuzzy
@@ -26,4 +28,19 @@ public abstract class FuzzySet {
      * The center of mass of the fuzzy set.
      */
     public abstract double centerOfGravity();
+
+    /**
+     * Obtains the representative points the X axis
+     */
+    public abstract double[] getPoints();
+
+    /**
+     * Sets the representative points the X axis
+     */
+    public abstract void setPoints(double[] points);
+
+    /**
+     * Gets a JSON/YAML representation of the points
+     */
+    public abstract String toJSON();
 }

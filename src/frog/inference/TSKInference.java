@@ -24,18 +24,17 @@ public class TSKInference {
      * </ul>
      * 
      * @param kb TSK rule base system
-     * @param data Array of input data, one for each antecedent
      * @return Crisp output value
      * @return 
      */
-    public static double[] inference(KnowledgeBase<TSKRule> kb, Data[] data, double[] input) {
+    public static double[] inference(KnowledgeBase<TSKRule> kb, double[] input) {
         int n_outputs = kb.database.outputs.length;
 
         double[] result = new double[n_outputs];
         double norm = 0.;
         for (int i = 0; i < kb.rulebase.size(); i++) {
             double[] tmp = kb.rulebase.get(i).inference(input);
-            double dof = kb.rulebase.get(i).dof(data, kb.database);
+            double dof = kb.rulebase.get(i).dof(input, kb.database);
             norm += dof;
             for (int o = 0; o < n_outputs; o++) {
                 result[o] += tmp[o]*dof;

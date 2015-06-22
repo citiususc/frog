@@ -1,6 +1,10 @@
 package frog.fuzzyset;
 
+import org.apache.commons.lang.ArrayUtils;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UnionFuzzySet extends FuzzySet {
@@ -37,6 +41,28 @@ public class UnionFuzzySet extends FuzzySet {
 			den += fs.height;
 		}
 		return num / den;
+	}
+
+	@Override
+	public double[] getPoints() {
+		double[] points = new double[0];
+		for (FuzzySet fs : sets) points = ArrayUtils.addAll(points, fs.getPoints());
+        return points;
+	}
+
+	@Override
+	public void setPoints(double[] points) {
+		throw new UnsupportedOperationException();
+	}
+
+	public String toJSON(){
+		String points="[";
+		for(int i=0; i<sets.size();i++){
+			String s=sets.get(i).toJSON();
+			points+=s.substring(1, s.length()-1)+",";
+		}
+		points+="]";
+		return points;
 	}
 
 }

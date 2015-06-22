@@ -8,11 +8,13 @@ import frog.database.DataBase;
 import frog.database.SingleData;
 import frog.fuzzyset.FuzzySet;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ismael.rodriguez
  */
-public class LinguisticLabelProposition implements LabelProposition {
+public class LinguisticLabelProposition implements LabelProposition, Serializable {
 
     public int var;
     public int label;
@@ -26,8 +28,8 @@ public class LinguisticLabelProposition implements LabelProposition {
         this.label = label;
     }
     
-    public double dof(SingleData data, DataBase db) {
-        return db.get(var).partition.get(label).dof(data.value);
+    public double dof(Double data, DataBase db) {
+        return db.get(var).partition.get(label).dof(data);
     }
     
     public FuzzySet getLabel(DataBase db) {

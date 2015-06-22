@@ -31,8 +31,23 @@ public class Singleton extends FuzzySet {
 	}
 
 	@Override
+	public double[] getPoints() {
+		return new double[]{point};
+	}
+
+	@Override
+	public void setPoints(double[] points) {
+		assert points.length == 1;
+		this.point = points[0];
+	}
+
+	@Override
 	public double centerOfGravity() {
 		return this.point;
+	}
+
+	public String toJSON(){
+		return "[["+this.point+","+this.height+"]]";
 	}
 
 }
