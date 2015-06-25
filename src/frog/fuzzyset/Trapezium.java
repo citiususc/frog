@@ -7,6 +7,8 @@ public class Trapezium extends FuzzySet {
 
 	public double a, b, c, d;
 
+	public Trapezium() {this(0, 1, 2, 3, 1.);}
+
 	public Trapezium(double a, double b, double c, double d) {
 		this(a, b, c, d, 1.);
 	}

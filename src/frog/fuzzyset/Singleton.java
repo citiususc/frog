@@ -6,6 +6,8 @@ package frog.fuzzyset;
 public class Singleton extends FuzzySet {
 
 	private double point;
+
+	public Singleton(){ this(0, 1);}
 	
 	public Singleton(double point) {
 		this(point, 1.);
