@@ -7,6 +7,7 @@ package frog.io;
 
 import frog.database.PartitionBuilder;
 import frog.database.Variable;
+import frog.fuzzyset.FuzzySet;
 import frog.fuzzyset.Rectangle;
 import frog.fuzzyset.Singleton;
 import frog.fuzzyset.Trapezium;
@@ -20,7 +21,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,21 +35,11 @@ import java.util.logging.Logger;
 public class Import {
     private static KnowledgeBase<TSKRule> kb;
 
-    public static KnowledgeBase<TSKRule> importarBase(String nomFich){
+    public static KnowledgeBase<TSKRule> importarBase(StringReader contenido){
 
         kb = new KnowledgeBase<>();
-        File archivo;
-        FileReader fr=null;
-        BufferedReader br=null;
-        try{
-            archivo = new File(nomFich);
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
-        }catch(Exception e){
-            System.out.println("Error, no se encuentra el archivo");
-            System.exit(0);
-        }
-
+        BufferedReader br= new BufferedReader(contenido);
+        
         try {
             for(int i=0; i<2; i++){
                 String linea = br.readLine();
@@ -70,14 +63,7 @@ public class Import {
         else if (kb.type.equals(KnowledgeBase.LINGUISTIC)){
             importarRulesLing(br);
         }
-        try{
-            fr.close();
-        }catch(Exception e){
-            System.out.println("Error, al cerrar el archivo");
-            System.exit(0);
-        }
-
-
+        
         return kb;
     }
 
@@ -96,7 +82,7 @@ public class Import {
     private static void importarInOut(BufferedReader br){
         ArrayList<Variable> inputs = new ArrayList<>();
         ArrayList<Variable> outputs = new ArrayList<>();
-        Variable v; boolean flag=true,flag2=false,flag3=false;int partition=0;
+        Variable v; boolean flag=true,flag2=false,flag3=false;int partition;
         try {
             StringTokenizer datos=null;
             br.readLine();
@@ -116,15 +102,15 @@ public class Import {
                 }
                 String nombreInput = datos.nextToken();
                 datos = pasarLinea(br);
-                Float min = Float.parseFloat(datos.nextToken());
-                Float max = Float.parseFloat(datos.nextToken());
+                Double min = Double.parseDouble(datos.nextToken());
+                Double max = Double.parseDouble(datos.nextToken());
                 datos = pasarLinea(br);
-                //Float media = Float.parseFloat(datos.nextToken());
+                Double media = Double.parseDouble(datos.nextToken());
                 datos = pasarLinea(br);
-                //Float varianza = Float.parseFloat(datos.nextToken());
+                Double varianza = Double.parseDouble(datos.nextToken());
 
                 if(flag==true){
-                    v = new Variable(nombreInput,min,max);
+                    v = new Variable(nombreInput,min,max,media,varianza);
                     if(kb.type.equals(KnowledgeBase.LINGUISTIC) && flag==true){
                         pasarLinea(br);
                         partition=0;
@@ -143,17 +129,16 @@ public class Import {
                                 break;
                             }
                             else{
-                                partition++;
+                                v.partition.add(importarPartition(l));
                             }
 
                         }
-                        v.partition = PartitionBuilder.uniform(v, partition);
 
                     }
                     inputs.add(v);
                 }
                 else{
-                    v= new Variable(nombreInput,min,max);
+                    v= new Variable(nombreInput,min,max,media,varianza);
                     outputs.add(v);
                 }
             }
@@ -172,6 +157,33 @@ public class Import {
 
         kb.database.inputs = in.clone();
         kb.database.outputs = out.clone();
+    }
+    
+    private static FuzzySet importarPartition(String l){
+        ArrayList<Double> numeros = new ArrayList();
+        StringTokenizer datos = new StringTokenizer(l,"[");
+        datos.nextToken();
+        datos = new StringTokenizer(datos.nextToken(),"]");
+        datos = new StringTokenizer(datos.nextToken(),", ");
+        while(datos.hasMoreTokens()){
+            numeros.add(Double.parseDouble(datos.nextToken()));
+        }
+        
+        switch (numeros.size()){
+            case 1:
+                Singleton s=new Singleton(numeros.get(0));
+                return s;
+            case 2:
+                Rectangle r = new Rectangle(numeros.get(0),numeros.get(1));
+                return r;
+            case 3:
+                Triangle t = new Triangle(numeros.get(0),numeros.get(1),numeros.get(2));
+                return t;
+            case 4:
+                Trapezium t2= new Trapezium(numeros.get(0),numeros.get(1),numeros.get(2),numeros.get(3));
+                return t2;   
+        }
+      return  new Triangle(0,0,0);
     }
 
     private static void importarRulesAprox(BufferedReader br){
@@ -258,25 +270,25 @@ public class Import {
                 }
                 switch (an.size()){
                     case 3: //singleton
-                        Float punto = Float.parseFloat(an.get(2));
+                        Double punto = Double.parseDouble(an.get(2));
                         antecedentes.add(new ApproximativeLabelProposition(new Singleton(punto)));
                         break;
                     case 4: //rectangle
-                        Float a = Float.parseFloat(an.get(2));
-                        Float b = Float.parseFloat(an.get(3));
+                        Double a = Double.parseDouble(an.get(2));
+                        Double b = Double.parseDouble(an.get(3));
                         antecedentes.add(new ApproximativeLabelProposition(new Rectangle(a, b)));
                         break;
                     case 5://triangle
-                        Float a1 = Float.parseFloat(an.get(2));
-                        Float b1 = Float.parseFloat(an.get(3));
-                        Float c1 = Float.parseFloat(an.get(4));
+                        Double a1 = Double.parseDouble(an.get(2));
+                        Double b1 = Double.parseDouble(an.get(3));
+                        Double c1 = Double.parseDouble(an.get(4));
                         antecedentes.add(new ApproximativeLabelProposition(new Triangle(a1, b1, c1)));
                         break;
                     case 6://trapezium
-                        Float a2 = Float.parseFloat(an.get(2));
-                        Float b2 = Float.parseFloat(an.get(3));
-                        Float c2 = Float.parseFloat(an.get(4));
-                        Float d2 = Float.parseFloat(an.get(5));
+                        Double a2 = Double.parseDouble(an.get(2));
+                        Double b2 = Double.parseDouble(an.get(3));
+                        Double c2 = Double.parseDouble(an.get(4));
+                        Double d2 = Double.parseDouble(an.get(5));
                         antecedentes.add(new ApproximativeLabelProposition(new Trapezium(a2, b2, c2, d2)));
                         break;
                 }
@@ -288,9 +300,10 @@ public class Import {
         return antecedentes;
     }
 
-    private static ArrayList<double[]> leerConsecuentes(BufferedReader br){
+     private static ArrayList<double[]> leerConsecuentes(BufferedReader br){
         ArrayList<double[]> con = new ArrayList<>();
-        ArrayList aux = new ArrayList<>();
+        HashMap<String,Double> aux = new HashMap<>();
+        String nameInput;
         try {
             String linea = br.readLine();
             StringTokenizer datos = new StringTokenizer(linea," ");
@@ -302,16 +315,32 @@ public class Import {
                 StringTokenizer datos2= new StringTokenizer(datos.nextToken(),")");
                 datos2 = new StringTokenizer(datos2.nextToken(),"(");
                 datos2 = new StringTokenizer(datos2.nextToken(),"*");
-                aux.add(Double.parseDouble(datos2.nextToken()));
+                Double d=Double.parseDouble(datos2.nextToken());
+                if(datos2.hasMoreTokens()){
+                	nameInput=datos2.nextToken();
+                }
+                else{
+                	nameInput="";
+                }
+                aux.put(nameInput, d);
+                
             }
         } catch (IOException ex) {
-            Logger.getLogger(Import.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en leerConsecuentes "+ex.getMessage());
         }
-        double[] c2 = new double[aux.size()];
-        for(int i=0; i<aux.size();i++){
-            c2[i]=(double)aux.get(i);
+        Variable[] inputs=kb.database.inputs;
+        double[] c2 = new double[inputs.length+1];
+        for(int i=0; i<inputs.length;i++){
+        	if(aux.containsKey(inputs[i].name)){
+        		c2[i]=aux.get(inputs[i].name);
+        	}
+        	else{
+        		c2[i]=0;
+        	}
+        	
         }
-        con.add(c2);
+        c2[inputs.length]=aux.get("");
+        con.add(c2);       
         return con;
     }
 

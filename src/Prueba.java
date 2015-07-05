@@ -1,7 +1,14 @@
 import frog.database.*;
 import frog.fuzzyset.*;
+import frog.io.Export;
+import frog.io.Import;
 import frog.rulebase.*;
 import frog.proposition.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import org.yaml.snakeyaml.Yaml;
 
 import java.util.ArrayList;
@@ -10,11 +17,13 @@ import java.util.ArrayList;
  * Created by ismael.rodriguez on 23/06/15.
  */
 public class Prueba {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Yaml yaml = new Yaml();
-        String dump = yaml.dump(linguisticKnowledgeBase());
-        System.out.println(dump);
-        KnowledgeBase<TSKRule> kb = (KnowledgeBase<TSKRule>) yaml.load(dump);
+        String text = new String(Files.readAllBytes(Paths.get("ele-1.yml")), StandardCharsets.UTF_8);
+        KnowledgeBase<TSKRule> kb = (KnowledgeBase<TSKRule>) yaml.load(text);
+        Export.guardarDatabase("ficheroPruebaYaml.yaml", kb);
+        
+        
     }
 
     public static KnowledgeBase<TSKRule> linguisticKnowledgeBase() {
@@ -41,8 +50,10 @@ public class Prueba {
             }
         }
 
-
-        return new KnowledgeBase<>(db, rb);
+        KnowledgeBase<TSKRule> kb = new KnowledgeBase<>(db, rb);
+        kb.name="ejemplo1";
+        kb.type="L";
+        return kb;
     }
 
     public static KnowledgeBase<TSKRule> approximativeKnowledgeBase() {

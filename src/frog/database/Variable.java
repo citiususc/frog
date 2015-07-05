@@ -53,6 +53,15 @@ public class Variable implements Serializable {
         this.partition = partition;
     }
     
+    public Variable(String name, double min, double max, double norm_mean, double norm_std) {
+        this.name = name;
+        this.min = min;
+        this.max = max;
+        this.norm_mean= norm_mean;
+        this.norm_std = norm_std;
+        this.partition = new Partition();
+    }
+    
     public double range() {
         return (this.max - this.min);
     }
