@@ -2,9 +2,7 @@ package frog.fuzzyset;
 
 import org.apache.commons.lang.ArrayUtils;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class UnionFuzzySet extends FuzzySet {

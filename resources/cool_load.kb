@@ -1,0 +1,206 @@
+!!frog.rulebase.KnowledgeBase
+database:
+  inputs:
+  - max: 0.98
+    min: 0.62
+    name: relative_compactness
+    norm_mean: 0.7641666666666667
+    norm_std: 0.10577747587475217
+    partition:
+    - !!frog.fuzzyset.Trapezium
+      a: 0.6198942225241253
+      b: 0.62
+      c: 0.98
+      d: 0.9801057774758748
+      height: 1.0
+      points: [0.6198942225241253, 0.62, 0.98, 0.9801057774758748]
+  - max: 808.5
+    min: 514.5
+    name: surface_area
+    norm_mean: 671.7083333333333
+    norm_std: 88.08611605586826
+    partition:
+    - !!frog.fuzzyset.Trapezium
+      a: 514.4119138839442
+      b: 514.5
+      c: 514.5
+      d: 742.1167470298212
+      height: 1.0
+      points: [514.4119138839442, 514.5, 514.5, 742.1167470298212]
+    - !!frog.fuzzyset.Trapezium
+      a: 514.5
+      b: 742.1167470298212
+      c: 808.5
+      d: 808.5880861160558
+      height: 1.0
+      points: [514.5, 742.1167470298212, 808.5, 808.5880861160558]
+  - max: 416.5
+    min: 245.0
+    name: wall_area
+    norm_mean: 318.5
+    norm_std: 43.6264814379949
+    partition:
+    - !!frog.fuzzyset.Trapezium
+      a: 244.956373518562
+      b: 245.0
+      c: 295.67762452552176
+      d: 320.88914213663156
+      height: 1.0
+      points: [244.956373518562, 245.0, 295.67762452552176, 320.88914213663156]
+    - !!frog.fuzzyset.Trapezium
+      a: 295.67762452552176
+      b: 320.88914213663156
+      c: 320.88914213663156
+      d: 346.10065974774136
+      height: 1.0
+      points: [295.67762452552176, 320.88914213663156, 320.88914213663156, 346.10065974774136]
+    - !!frog.fuzzyset.Trapezium
+      a: 320.88914213663156
+      b: 346.10065974774136
+      c: 416.5
+      d: 416.54362648143797
+      height: 1.0
+      points: [320.88914213663156, 346.10065974774136, 416.5, 416.54362648143797]
+  - max: 220.5
+    min: 110.25
+    name: roof_area
+    norm_mean: 176.60416666666669
+    norm_std: 45.165950222920344
+    partition:
+    - !!frog.fuzzyset.Trapezium
+      a: 110.20483404977709
+      b: 110.25
+      c: 220.5
+      d: 220.54516595022292
+      height: 1.0
+      points: [110.20483404977709, 110.25, 220.5, 220.54516595022292]
+  - max: 7.0
+    min: 3.5
+    name: overall_height
+    norm_mean: 5.25
+    norm_std: 1.7511404367453496
+    partition:
+    - !!frog.fuzzyset.Trapezium
+      a: 3.4982488595632546
+      b: 3.5
+      c: 7.0
+      d: 7.001751140436745
+      height: 1.0
+      points: [3.4982488595632546, 3.5, 7.0, 7.001751140436745]
+  - max: 5.0
+    min: 2.0
+    name: orientation
+    norm_mean: 3.5
+    norm_std: 1.1187625870603635
+    partition:
+    - !!frog.fuzzyset.Trapezium
+      a: 1.9988812374129397
+      b: 2.0
+      c: 5.0
+      d: 5.00111876258706
+      height: 1.0
+      points: [1.9988812374129397, 2.0, 5.0, 5.00111876258706]
+  - max: 0.4
+    min: 2.7755575615628914E-17
+    name: glazing_area
+    norm_mean: 0.23437500000000103
+    norm_std: 0.1332205629147085
+    partition:
+    - !!frog.fuzzyset.Trapezium
+      a: -1.3322056291467654E-4
+      b: 2.7755575615628914E-17
+      c: 0.4
+      d: 0.40013322056291467
+      height: 1.0
+      points: [-1.3322056291467654E-4, 2.7755575615628914E-17, 0.4, 0.40013322056291467]
+  - max: 5.0
+    min: 0.0
+    name: glazing_area_distribution
+    norm_mean: 2.8125
+    norm_std: 1.5509596642247505
+    partition:
+    - !!frog.fuzzyset.Trapezium
+      a: -0.0015509596642244716
+      b: 0.0
+      c: 5.0
+      d: 5.001550959664225
+      height: 1.0
+      points: [-0.0015509596642244716, 0.0, 5.0, 5.001550959664225]
+  outputs:
+  - max: 48.03
+    min: 10.9
+    name: cooling_load
+    norm_mean: 24.587760416666665
+    norm_std: 9.513305562326163
+    partition: []
+rulebase:
+- !!frog.rulebase.TSKRule
+  antecedent:
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 0}
+  - !!frog.proposition.LinguisticLabelProposition {label: 1, var: 1}
+  - !!frog.proposition.LinguisticLabelProposition {label: 2, var: 2}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 3}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 4}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 5}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 6}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 7}
+  consequent:
+  - [0.18604343789073946, -0.41165628241767277, -0.4912991838913828, -0.16414519289261292,
+    0.7216790494160581, 0.029159783606687063, 0.18989154659114263, 0.005130634849459987,
+    1.3988682270762594]
+- !!frog.rulebase.TSKRule
+  antecedent:
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 0}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 1}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 2}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 3}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 4}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 5}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 6}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 7}
+  consequent:
+  - [-0.09549318125878438, -0.011854882107423161, 0.06757537867019513, -0.044196208794139526,
+    0.4599603226392482, -0.004640068761969927, 0.32266148590770777, 0.06256666661454394,
+    0.1558263541790094]
+- !!frog.rulebase.TSKRule
+  antecedent:
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 0}
+  - !!frog.proposition.LinguisticLabelProposition {label: 1, var: 1}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 2}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 3}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 4}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 5}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 6}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 7}
+  consequent:
+  - [0.19676706131118749, -0.15615396138630655, 0.36907942934597643, -0.33052148465733405,
+    0.39978426435132663, -0.002568424504192224, 0.12073319923882876, -0.01691723252374961,
+    0.21253096165288682]
+- !!frog.rulebase.TSKRule
+  antecedent:
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 0}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 1}
+  - !!frog.proposition.LinguisticLabelProposition {label: 1, var: 2}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 3}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 4}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 5}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 6}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 7}
+  consequent:
+  - [0.3543487816941321, -0.23843019284576497, 0.18391774724928933, -0.32132695858844224,
+    0.002018346688128723, -0.13628042459048526, 0.21130298170459874, 0.12839382483172418,
+    0.0020196620164398705]
+- !!frog.rulebase.TSKRule
+  antecedent:
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 0}
+  - !!frog.proposition.LinguisticLabelProposition {label: 1, var: 1}
+  - !!frog.proposition.LinguisticLabelProposition {label: 1, var: 2}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 3}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 4}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 5}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 6}
+  - !!frog.proposition.LinguisticLabelProposition {label: 0, var: 7}
+  consequent:
+  - [0.13565517526155255, -0.06019943798080366, 0.30159112544622774, -0.20435854038893594,
+    0.05388739169646955, 0.03394384657530082, 0.17879482307151215, -0.006409389990023359,
+    -0.4594888372526514]

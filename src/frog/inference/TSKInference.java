@@ -4,7 +4,6 @@
  */
 package frog.inference;
 
-import frog.database.Data;
 import frog.rulebase.KnowledgeBase;
 import frog.rulebase.TSKRule;
 

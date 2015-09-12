@@ -1,7 +1,6 @@
 package frog.proposition;
 
 import frog.database.DataBase;
-import frog.database.SingleData;
 import frog.fuzzyset.FuzzySet;
 import frog.fuzzyset.Triangle;
 

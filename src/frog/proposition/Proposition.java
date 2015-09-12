@@ -1,6 +1,5 @@
 package frog.proposition;
 
-import frog.database.Data;
 import frog.database.DataBase;
 
 /**

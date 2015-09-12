@@ -7,7 +7,6 @@ package frog.rulebase;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import frog.database.Data;
 import frog.database.DataBase;
 import frog.proposition.Proposition;
 
