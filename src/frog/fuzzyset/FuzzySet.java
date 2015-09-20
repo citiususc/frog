@@ -1,11 +1,9 @@
 package frog.fuzzyset;
 
-import java.io.Serializable;
-
 /**
  * A set whose elements have degrees of membership.
  */
-public abstract class FuzzySet implements Serializable {
+public abstract class FuzzySet {
 	
     /**
      * The maximum degree of fullfilment that an element can have in this fuzzy
@@ -14,7 +12,7 @@ public abstract class FuzzySet implements Serializable {
     public double height;
 	
     /**
-     * Degree of fullfilment of x.
+     * Degree of fulfillment of x.
      */
     public abstract double dof(double x);
     
@@ -35,7 +33,7 @@ public abstract class FuzzySet implements Serializable {
     public abstract double[] getPoints();
 
     /**
-     * Sets the representative points the X axis
+     * Sets the representative points of the X axis
      */
     public abstract void setPoints(double[] points);
 
@@ -43,4 +41,17 @@ public abstract class FuzzySet implements Serializable {
      * Gets a JSON/YAML representation of the points
      */
     public abstract String toJSON();
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof FuzzySet) {
+            FuzzySet other = (FuzzySet) obj;
+            boolean equals = other.getPoints().length == this.getPoints().length;
+            for (int i = 0; equals && i < other.getPoints().length; i++) {
+                equals &= other.getPoints()[i] == this.getPoints()[i];
+            }
+            return equals;
+        }
+        return false;
+    }
 }

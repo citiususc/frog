@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package frog.rulebase;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import frog.database.DataBase;
 import frog.proposition.Proposition;
@@ -14,24 +10,23 @@ import frog.proposition.Proposition;
  * A rule whose antecedent is composed of linguistic variables and the 
  * consequent is represented by a function of the input variables.
  */
-@SuppressWarnings("rawtypes")
-public class TSKRule implements Rule, Serializable {
+public class TSKRule implements Rule {
     /**
      * Array of antecedent propositions
      */
-    public ArrayList<? extends Proposition> antecedent;
+    public List<? extends Proposition> antecedent;
     
     /**
      * Array of a list of double for each consequent, representing the weights
      * for each input in the linear combination for the output
      */
-    public ArrayList<double[]> consequent;
+    public List<double[]> consequent;
 
     public TSKRule() {
         this(new ArrayList<Proposition>(), new ArrayList<double[]>());
     }
     
-    public TSKRule(ArrayList<? extends Proposition> ant, ArrayList<double[]> con) {
+    public TSKRule(List<? extends Proposition> ant, List<double[]> con) {
             this.antecedent = ant;
             this.consequent = con;
     }
@@ -40,8 +35,8 @@ public class TSKRule implements Rule, Serializable {
      * Infers a list of output crisp values from the input data. Each output is
      * the result of a linear combination of the input data and the consequent
      * weights.
-     * @param data
-     * @return 
+     * @param data input data
+     * @return output values estimated by the rule
      */
     public double[] inference(double[] data) {
             double result[] = new double[consequent.size()];
@@ -77,21 +72,5 @@ public class TSKRule implements Rule, Serializable {
     @Override
     public String toString() {
             return "{A: " + this.antecedent + ", C: " + this.consequent + "}";
-    }
-
-    public ArrayList<? extends Proposition> getAntecedent() {
-        return antecedent;
-    }
-
-    public void setAntecedent(ArrayList<? extends Proposition> antecedent) {
-        this.antecedent = antecedent;
-    }
-
-    public ArrayList<double[]> getConsequent() {
-        return consequent;
-    }
-
-    public void setConsequent(ArrayList<double[]> consequent) {
-        this.consequent = consequent;
     }
 }

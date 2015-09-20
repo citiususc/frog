@@ -17,5 +17,5 @@ public interface LabelProposition extends Proposition<Double>  {
      * Returns the label that is indicated by this proposition
      * @param db DataBase where the information of the fuzzy sets is located
      */
-    public FuzzySet getLabel(DataBase db);
+    FuzzySet getLabel(DataBase db);
 }

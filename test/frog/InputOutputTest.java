@@ -1,29 +1,25 @@
+package frog;
+
 import frog.database.*;
 import frog.rulebase.*;
 import junit.framework.TestCase;
 import frog.proposition.*;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 import org.yaml.snakeyaml.Yaml;
 
 import java.util.ArrayList;
 
-import javax.print.attribute.TextSyntax;
-
 /**
- * Created by ismael.rodriguez on 23/06/15.
+ * Tests the Input/Output of a knowledge base from/to a YAML file
  */
-@SuppressWarnings("unused")
 public class InputOutputTest extends TestCase {
 
+    /**
+     * Tests if a #KnowledgeBase can be converted to a YAML format
+     */
     public static void testOutput() {
         // DataBase definition
         Variable[] inputs = new Variable[2];
@@ -54,14 +50,18 @@ public class InputOutputTest extends TestCase {
         
         assertTrue(true);
     }
-    
+
+    /**
+     * Tests if a #KnowledgeBase can be loadad from a YAML file
+     * @throws FileNotFoundException
+     */
     public static void testInput() throws FileNotFoundException {
     	Yaml yaml = new Yaml();
-    	
+
+        // YAML file loaded from resources folder
     	String file = Thread.currentThread().getContextClassLoader().getResource("cool_load.kb").getFile();
     	FileInputStream input = new FileInputStream(file);
-        KnowledgeBase<TSKRule> kb = (KnowledgeBase<TSKRule>) yaml.load(input);
-        
-        assertTrue(true);
+        Object obj = yaml.load(input);
+        assertTrue(obj instanceof KnowledgeBase);
     }
 }

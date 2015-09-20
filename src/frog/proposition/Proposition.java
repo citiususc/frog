@@ -9,9 +9,9 @@ import frog.database.DataBase;
  */
 public interface Proposition<D> {
     /**
-     * Degree of fullfilment of the proposition.
+     * Degree of fulfillment of the proposition.
      * @param data Input data.
      * @param db DataBase where the information of the fuzzy sets is located
      */
-    public double dof(D data, DataBase db);
+    double dof(D data, DataBase db);
 }

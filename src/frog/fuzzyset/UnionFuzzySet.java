@@ -5,6 +5,10 @@ import org.apache.commons.lang.ArrayUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A fuzzy set that represents the union of several fuzzy sets, that is, the degree of fulfillment for each
+ * input value is the maximum degree for each fuzzy set united
+ */
 public class UnionFuzzySet extends FuzzySet {
 
 	List<FuzzySet> sets;
@@ -55,9 +59,9 @@ public class UnionFuzzySet extends FuzzySet {
 
 	public String toJSON(){
 		String points="[";
-		for(int i=0; i<sets.size();i++){
-			String s=sets.get(i).toJSON();
-			points+=s.substring(1, s.length()-1)+",";
+		for (FuzzySet set : sets) {
+			String s = set.toJSON();
+			points += s.substring(1, s.length() - 1) + ",";
 		}
 		points+="]";
 		return points;

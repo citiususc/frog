@@ -4,9 +4,7 @@ import frog.database.DataBase;
 import frog.fuzzyset.FuzzySet;
 import frog.fuzzyset.Triangle;
 
-import java.io.Serializable;
-
-public class ApproximativeLabelProposition implements LabelProposition, Serializable {
+public class ApproximativeLabelProposition implements LabelProposition {
 
     public FuzzySet label;
 

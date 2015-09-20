@@ -89,37 +89,6 @@ public class PartitionBuilder {
 	}
 
 	/**
-	 * Builds a partition of an specific granularity with a symbolic
-	 * desplacement for each cross point between two adjacent fuzzy sets. With
-	 * this kind of displacement, a complete partition, i.e., a partition with
-	 * the sum of degree of fullfilment equal to 1 for all points in the domain.
-	 * 
-	 * @param var
-	 *            Variable to be partitioned
-	 * @param g
-	 *            Granularity of the partition, i.e., the number of labels
-	 * @param alpha
-	 *            Symbolic displacement for each cross point
-	 */
-	public static Partition uniformComplete(Variable var, int g, double[] alpha) {
-		if (g > 1) {
-			double[] cuts = new double[g];
-
-			double step = (var.max - var.min) / (double) (g - 1);
-
-			cuts[0] = var.min;
-			for (int i = 1; i < g - 1; i++) {
-				cuts[i] = var.min + step * i + alpha[i - 1] * step;
-			}
-			cuts[g - 1] = var.max;
-
-			return fromCuts(cuts, var, 0.5);
-		} else {
-			return uniform(var, g);
-		}
-	}
-
-	/**
 	 * Builds a partition from a list of centroids in the domain of the
 	 * variable, with the posibility of setting the fuzziness of the resulting
 	 * fuzzy sets. The centroids are those points that must have a degree of
@@ -142,7 +111,7 @@ public class PartitionBuilder {
 		}
 		cuts[centroids.length] = var.max;
 
-		return fromCuts(cuts, var, f);
+		return fromCuts(cuts, f);
 	}
 
 	/**
@@ -153,12 +122,10 @@ public class PartitionBuilder {
 	 * 
 	 * @param cuts
 	 *            array of cut points in the domain of the variable
-	 * @param var
-	 *            Variable to be partitioned
-	 * @see #fromCuts(double[], frog.database.Variable, double, double)
+	 * @see #fromCuts(double[], double, double)
 	 */
-	public static Partition fromCuts(double[] cuts, Variable var) {
-		return fromCuts(cuts, var, 1, 0);
+	public static Partition fromCuts(double[] cuts) {
+		return fromCuts(cuts, 1, 0);
 	}
 
 	/**
@@ -170,19 +137,17 @@ public class PartitionBuilder {
 	 * 
 	 * @param cuts
 	 *            array of cut points in the domain of the variable
-	 * @param var
-	 *            Variable to be partitioned
 	 * @param f
 	 *            Fuzziness index, defined between 0 (raw) and 1 (full fuzzy)
-	 * @see #fromCuts(double[], frog.database.Variable, double, double)
+	 * @see #fromCuts(double[], double, double)
 	 */
-	public static Partition fromCuts(double[] cuts, Variable var, double f) {
-		return fromCuts(cuts, var, f, 0);
+	public static Partition fromCuts(double[] cuts, double f) {
+		return fromCuts(cuts, f, 0);
 	}
 
 	/**
 	 * Builds a partition from a list of cuts in the domain of the variable,
-	 * with the posibility of setting the fuzziness of the resulting fuzzy sets
+	 * with the possibility of setting the fuzziness of the resulting fuzzy sets
 	 * and to set a symbolic displacement equal for all linguistic labels. The
 	 * cuts indicates the point where two adjacent linguistic labels are
 	 * crossed, and, therefore, the degree of fullfilment of both fuzzy sets is
@@ -193,20 +158,36 @@ public class PartitionBuilder {
 	 * 
 	 * @param cuts
 	 *            array of cut points in the domain of the variable
-	 * @param var
-	 *            Variable to be partitioned
 	 * @param f
 	 *            Fuzziness index, defined between 0 (raw) and 1 (full fuzzy)
 	 * @param alpha
 	 *            Symbolic displacement
 	 */
-	public static Partition fromCuts(double[] cuts, Variable var, double f, double alpha) {
+	public static Partition fromCuts(double[] cuts, double f, double alpha) {
 		double[] alphas = new double[cuts.length];
 		Arrays.fill(alphas, alpha);
-		return fromCuts(cuts, var, f, alphas);
+		return fromCuts(cuts, f, alphas);
 	}
-	
-	public static Partition fromCuts(double[] cuts, Variable var, double f, double[] alpha) {
+
+	/**
+	 * Builds a partition from a list of cuts in the domain of the variable,
+	 * with the possibility of setting the fuzziness of the resulting fuzzy sets
+	 * and to set a symbolic displacement specific for each linguistic label. The
+	 * cuts indicates the point where two adjacent linguistic labels are
+	 * crossed, and, therefore, the degree of fullfilment of both fuzzy sets is
+	 * 0.5 </br></br> Ref: Ishibuchi, H. & Yamamoto, T. Performance evaluation
+	 * of fuzzy partitions with different fuzzification grades Proceedings of
+	 * the 2002 IEEE International Conference on Fuzzy Systems, 2002, 2,
+	 * 1198-1203
+	 *
+	 * @param cuts
+	 *            array of cut points in the domain of the variable
+	 * @param f
+	 *            Fuzziness index, defined between 0 (raw) and 1 (full fuzzy)
+	 * @param alpha
+	 *            Symbolic displacement for each linguistic label
+	 */
+	public static Partition fromCuts(double[] cuts, double f, double[] alpha) {
 		/**
 		 * Desplacement of the cuts
 		 */
@@ -301,8 +282,24 @@ public class PartitionBuilder {
 		return result;
 	}
 
-    public static Partition fromCutsDisplaced(double[] cuts, Variable var, double[] alpha) {
-        Partition result = fromCuts(cuts, var);
+	/**
+	 * Builds a partition from a list of cuts in the domain of the variable,
+	 * with the possibility to set a symbolic displacement specific for each
+	 * linguistic label. The cuts indicates the point where two adjacent
+	 * linguistic labels are crossed, and, therefore, the degree of fulfillment
+	 * of both fuzzy sets is 0.5
+	 * </br></br> Ref: Ishibuchi, H. & Yamamoto, T. Performance evaluation
+	 * of fuzzy partitions with different fuzzification grades Proceedings of
+	 * the 2002 IEEE International Conference on Fuzzy Systems, 2002, 2,
+	 * 1198-1203
+	 *
+	 * @param cuts
+	 *            array of cut points in the domain of the variable
+	 * @param alpha
+	 *            Symbolic displacement for each linguistic label
+	 */
+    public static Partition fromCuts(double[] cuts, double[] alpha) {
+        Partition result = fromCuts(cuts);
 
         for (int i = 0; i < result.size(); i++) {
             Trapezium fs = (Trapezium)result.get(i);

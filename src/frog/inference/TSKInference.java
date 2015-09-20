@@ -24,7 +24,6 @@ public class TSKInference {
      * 
      * @param kb TSK rule base system
      * @return Crisp output value
-     * @return 
      */
     public static double[] inference(KnowledgeBase<TSKRule> kb, double[] input) {
         int n_outputs = kb.database.outputs.length;
@@ -62,13 +61,12 @@ public class TSKInference {
      *
      * @param kb TSK rule base system
      * @return Crisp output value
-     * @return
      */
     public static double[] normInference(KnowledgeBase<TSKRule> kb, double[] input) {
         int n_outputs = kb.database.outputs.length;
 
         double[] normInput = new double[input.length];
-        for (int j = 0; j < normInput.length; j++) normInput[j] = input[j] * kb.database.inputs[j].norm_std + kb.database.inputs[j].norm_mean;
+        for (int j = 0; j < normInput.length; j++) normInput[j] = input[j] * kb.database.inputs[j].normStd + kb.database.inputs[j].normMean;
 
         double[] result = new double[n_outputs];
         double norm = 0.;
@@ -86,7 +84,7 @@ public class TSKInference {
                 result[o] = Double.NaN;
             } else {
                 result[o] /= norm;
-                result[o] = kb.database.outputs[o].norm_std + kb.database.outputs[o].norm_mean;
+                result[o] = kb.database.outputs[o].normStd + kb.database.outputs[o].normMean;
             }
         }
 

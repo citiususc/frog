@@ -4,8 +4,8 @@ database:
   - max: 0.98
     min: 0.62
     name: relative_compactness
-    norm_mean: 0.7641666666666667
-    norm_std: 0.10577747587475217
+    normMean: 0.7641666666666667
+    normStd: 0.10577747587475217
     partition:
     - !!frog.fuzzyset.Trapezium
       a: 0.6198942225241253
@@ -17,8 +17,8 @@ database:
   - max: 808.5
     min: 514.5
     name: surface_area
-    norm_mean: 671.7083333333333
-    norm_std: 88.08611605586826
+    normMean: 671.7083333333333
+    normStd: 88.08611605586826
     partition:
     - !!frog.fuzzyset.Trapezium
       a: 514.4119138839442
@@ -37,8 +37,8 @@ database:
   - max: 416.5
     min: 245.0
     name: wall_area
-    norm_mean: 318.5
-    norm_std: 43.6264814379949
+    normMean: 318.5
+    normStd: 43.6264814379949
     partition:
     - !!frog.fuzzyset.Trapezium
       a: 244.956373518562
@@ -64,8 +64,8 @@ database:
   - max: 220.5
     min: 110.25
     name: roof_area
-    norm_mean: 176.60416666666669
-    norm_std: 45.165950222920344
+    normMean: 176.60416666666669
+    normStd: 45.165950222920344
     partition:
     - !!frog.fuzzyset.Trapezium
       a: 110.20483404977709
@@ -77,8 +77,8 @@ database:
   - max: 7.0
     min: 3.5
     name: overall_height
-    norm_mean: 5.25
-    norm_std: 1.7511404367453496
+    normMean: 5.25
+    normStd: 1.7511404367453496
     partition:
     - !!frog.fuzzyset.Trapezium
       a: 3.4982488595632546
@@ -90,8 +90,8 @@ database:
   - max: 5.0
     min: 2.0
     name: orientation
-    norm_mean: 3.5
-    norm_std: 1.1187625870603635
+    normMean: 3.5
+    normStd: 1.1187625870603635
     partition:
     - !!frog.fuzzyset.Trapezium
       a: 1.9988812374129397
@@ -103,8 +103,8 @@ database:
   - max: 0.4
     min: 2.7755575615628914E-17
     name: glazing_area
-    norm_mean: 0.23437500000000103
-    norm_std: 0.1332205629147085
+    normMean: 0.23437500000000103
+    normStd: 0.1332205629147085
     partition:
     - !!frog.fuzzyset.Trapezium
       a: -1.3322056291467654E-4
@@ -116,8 +116,8 @@ database:
   - max: 5.0
     min: 0.0
     name: glazing_area_distribution
-    norm_mean: 2.8125
-    norm_std: 1.5509596642247505
+    normMean: 2.8125
+    normStd: 1.5509596642247505
     partition:
     - !!frog.fuzzyset.Trapezium
       a: -0.0015509596642244716
@@ -130,8 +130,8 @@ database:
   - max: 48.03
     min: 10.9
     name: cooling_load
-    norm_mean: 24.587760416666665
-    norm_std: 9.513305562326163
+    normMean: 24.587760416666665
+    normStd: 9.513305562326163
     partition: []
 rulebase:
 - !!frog.rulebase.TSKRule

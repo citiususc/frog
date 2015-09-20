@@ -7,13 +7,11 @@ package frog.proposition;
 import frog.database.DataBase;
 import frog.fuzzyset.FuzzySet;
 
-import java.io.Serializable;
-
 /**
  *
  * @author ismael.rodriguez
  */
-public class LinguisticLabelProposition implements LabelProposition, Serializable {
+public class LinguisticLabelProposition implements LabelProposition {
 
     public int var;
     public int label;

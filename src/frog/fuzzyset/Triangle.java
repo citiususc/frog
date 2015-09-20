@@ -69,17 +69,6 @@ public class Triangle extends FuzzySet {
         return "[" + this.a + ", " + this.b + ", " + this.c + "]";
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Triangle) {
-            Triangle other = (Triangle) obj;
-            if (this.a == other.a && this.b == other.b && this.c == other.c && this.height == other.height) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public String toJSON(){
         return "[["+this.a+",0],["+this.b+","+this.height+"],["+this.c+",0]]";
     }

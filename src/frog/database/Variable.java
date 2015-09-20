@@ -1,13 +1,10 @@
 package frog.database;
 
-import java.io.Serializable;
-import java.util.Random;
-
 /**
  * Characteristic or qualitie that the individuals of a population possess, 
  * expressed in numerical form, and with values between two numbers.
  */
-public class Variable implements Serializable {
+public class Variable {
 
     /**
      * Name of the variable.
@@ -27,12 +24,12 @@ public class Variable implements Serializable {
     /**
      * The mean for normalization.
      */
-    public double norm_mean;
+    public double normMean;
     
     /**
      * The standard deviation for normalization.
      */
-    public double norm_std;
+    public double normStd;
     
     /**
      * The partition of the variable into linguistic terms/labels (fuzzy sets).
@@ -40,6 +37,7 @@ public class Variable implements Serializable {
     public Partition partition;
 
     public Variable() {
+        this("var", -Double.MAX_VALUE, Double.MAX_VALUE);
     }
     
     public Variable(String name, double min, double max) {
@@ -47,79 +45,27 @@ public class Variable implements Serializable {
     }
 
     public Variable(String name, double min, double max, Partition partition) {
+        this(name, min, max, partition, 0., 1.);
+    }
+    
+    public Variable(String name, double min, double max, Partition partition, double normMean, double normStd) {
         this.name = name;
         this.min = min;
         this.max = max;
+        this.normMean = normMean;
+        this.normStd = normStd;
         this.partition = partition;
     }
-    
-    public Variable(String name, double min, double max, double norm_mean, double norm_std) {
-        this.name = name;
-        this.min = min;
-        this.max = max;
-        this.norm_mean= norm_mean;
-        this.norm_std = norm_std;
-        this.partition = new Partition();
-    }
-    
-    public double range() {
+
+    /**
+     * @return the domain of the variable
+     */
+    public double domain() {
         return (this.max - this.min);
-    }
-    
-    public double random(Random rnd) {
-        return rnd.nextDouble() * this.range() + this.min;
     }
 
     @Override
     public String toString() {
         return name + " [" + min + ", " + max + "] " + partition; 
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getMin() {
-        return min;
-    }
-
-    public void setMin(double min) {
-        this.min = min;
-    }
-
-    public double getMax() {
-        return max;
-    }
-
-    public void setMax(double max) {
-        this.max = max;
-    }
-
-    public double getNorm_mean() {
-        return norm_mean;
-    }
-
-    public void setNorm_mean(double norm_mean) {
-        this.norm_mean = norm_mean;
-    }
-
-    public double getNorm_std() {
-        return norm_std;
-    }
-
-    public void setNorm_std(double norm_std) {
-        this.norm_std = norm_std;
-    }
-
-    public Partition getPartition() {
-        return partition;
-    }
-
-    public void setPartition(Partition partition) {
-        this.partition = partition;
     }
 }

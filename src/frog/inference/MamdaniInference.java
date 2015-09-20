@@ -1,6 +1,5 @@
 package frog.inference;
 
-import frog.database.Data;
 import frog.fuzzyset.FuzzySet;
 import frog.rulebase.KnowledgeBase;
 import frog.rulebase.MamdaniRule;
@@ -24,7 +23,7 @@ public class MamdaniInference {
      * @param data Array of input data, one for each antecedent
      * @return Crisp output value
      */
-    public static double[] centerOfGravity(KnowledgeBase<MamdaniRule> kb, Data[] data) {
+    public static double[] centerOfGravity(KnowledgeBase<MamdaniRule> kb, double[] data) {
         int n_outputs = kb.database.outputs.length;
         FuzzySet[][] output = new FuzzySet[n_outputs][kb.rulebase.size()];
 
