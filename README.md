@@ -10,6 +10,25 @@ Only one-labeled (i.e. only one fuzzy set) propositions are supported, with two 
 * Linguitisc: a general definition of the fuzzy sets that partitions the variables is used to indicate the label
 * Approximative: the definition of the label must be provided specifically for each proposition
 
+## Installation
+To use the frog library you can use (JitPack)[http://jitpack.io] adding the following repository to the pom.xml:
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository
+```
+and add this dependency for the last commit:
+```xml
+<dependency>
+    <groupId>com.github.citiususc</groupId>
+    <artifactId>frog</artifactId>
+    <version>e41dda8</version>
+</dependency>
+```
+
+For other dependency systems, please read the (JitPack documentation)[https://jitpack.io/docs/].
+
 ## Export/Import
 frog uses [SnakeYAML](https://github.com/asomov/snakeyaml) for export/import to/from files using YAML format.
 
@@ -52,7 +71,7 @@ TSKInference.inference(this.kb, input);
 
 The frog library is licensed under the Apache 2 license, quoted below.
 
-    Copyright 2013 Centro de Investigación en Tecnoloxías da Información (CITIUS),
+    Copyright 2013 Centro de InvestigaciÃ³n en TecnoloxÃ­as da InformaciÃ³n (CITIUS),
     University of Santiago de Compostela (USC).
 
     Licensed under the Apache License, Version 2.0 (the "License");
