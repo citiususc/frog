@@ -11,7 +11,7 @@ Only one-labeled (i.e. only one fuzzy set) propositions are supported, with two 
 * Approximative: the definition of the label must be provided specifically for each proposition
 
 ## Installation
-To use the frog library you can use (JitPack)[http://jitpack.io] adding the following repository to the pom.xml:
+To use the frog library you can use [JitPack](http://jitpack.io) adding the following repository to the pom.xml:
 ```xml
 <repository>
     <id>jitpack.io</id>
