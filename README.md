@@ -27,7 +27,7 @@ and add this dependency for the last commit:
 </dependency>
 ```
 
-For other dependency systems, please read the (JitPack documentation)[https://jitpack.io/docs/].
+For other dependency systems, please read the [JitPack documentation](https://jitpack.io/docs/).
 
 ## Export/Import
 frog uses [SnakeYAML](https://github.com/asomov/snakeyaml) for export/import to/from files using YAML format.
