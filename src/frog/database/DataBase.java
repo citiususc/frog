@@ -1,11 +1,12 @@
 package frog.database;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * Contains the linguistic variables considered in the fuzzy system
  */
-public class DataBase {
+public class DataBase implements Serializable {
     /** Input variables **/
     public Variable[] inputs;
     /** Output variables **/

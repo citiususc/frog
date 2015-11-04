@@ -1,9 +1,11 @@
 package frog.fuzzyset;
 
+import java.io.Serializable;
+
 /**
  * A set whose elements have degrees of membership.
  */
-public abstract class FuzzySet {
+public abstract class FuzzySet implements Serializable {
 	
     /**
      * The maximum degree of fullfilment that an element can have in this fuzzy

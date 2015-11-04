@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.usc.citius</groupId>
 	<artifactId>frog</artifactId>
-	<version>0.9</version>
+	<version>1.0</version>
 	<name>FROG</name>
 	<description>Fuzzy Rules of Greatness</description>
 	<dependencies>

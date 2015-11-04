@@ -1,5 +1,6 @@
 package frog.rulebase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,5 +9,5 @@ import java.util.ArrayList;
  * @param <T> The type of the rules (Mamdani or TSK)
  */
 @SuppressWarnings("serial")
-public class RuleBase<T extends Rule> extends ArrayList<T> {
+public class RuleBase<T extends Rule> extends ArrayList<T> implements Serializable {
 }

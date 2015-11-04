@@ -2,12 +2,13 @@ package frog.database;
 
 import frog.fuzzyset.FuzzySet;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Fuzzy partition, i.e., a split of the variable domain into a fuzzy sets  for each linguistic term
  */
-public class Partition extends ArrayList<FuzzySet> {
+public class Partition extends ArrayList<FuzzySet> implements Serializable {
 
     /**
      * Searchs for the most similar linguistic label for the input
