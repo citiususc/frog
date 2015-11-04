@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Represents a whole Knowledge Base composed by a data base and a rule base
  */
-public class KnowledgeBase<T extends Rule> implements Serializable {
+public class KnowledgeBase<T extends Rule> {
     public DataBase database;
     public RuleBase<T> rulebase;
 
@@ -18,5 +18,13 @@ public class KnowledgeBase<T extends Rule> implements Serializable {
     public KnowledgeBase(DataBase database, RuleBase<T> rulebase) {
         this.database = database;
         this.rulebase = rulebase;
+    }
+
+    public DataBase getDatabase() {
+        return database;
+    }
+
+    public RuleBase<T> getRulebase() {
+        return rulebase;
     }
 }

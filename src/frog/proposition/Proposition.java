@@ -9,7 +9,7 @@ import java.io.Serializable;
  * a certain degree.
  * @param <D> The type of input that is used in the proposition
  */
-public interface Proposition<D> extends Serializable {
+public interface Proposition<D> {
     /**
      * Degree of fulfillment of the proposition.
      * @param data Input data.

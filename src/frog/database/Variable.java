@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Characteristic or qualitie that the individuals of a population possess, 
  * expressed in numerical form, and with values between two numbers.
  */
-public class Variable implements Serializable {
+public class Variable {
 
     /**
      * Name of the variable.
@@ -69,5 +69,29 @@ public class Variable implements Serializable {
     @Override
     public String toString() {
         return name + " [" + min + ", " + max + "] " + partition; 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getMin() {
+        return min;
+    }
+
+    public double getMax() {
+        return max;
+    }
+
+    public double getNormMean() {
+        return normMean;
+    }
+
+    public double getNormStd() {
+        return normStd;
+    }
+
+    public Partition getPartition() {
+        return partition;
     }
 }

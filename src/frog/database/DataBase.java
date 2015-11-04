@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * Contains the linguistic variables considered in the fuzzy system
  */
-public class DataBase implements Serializable {
+public class DataBase {
     /** Input variables **/
     public Variable[] inputs;
     /** Output variables **/
@@ -46,5 +46,13 @@ public class DataBase implements Serializable {
     @Override
     public String toString() {
         return "{Inputs: " + Arrays.toString(inputs) + ", Outputs: " + Arrays.toString(outputs) + "}";
+    }
+
+    public Variable[] getInputs() {
+        return inputs;
+    }
+
+    public Variable[] getOutputs() {
+        return outputs;
     }
 }

@@ -17,7 +17,6 @@
 			<artifactId>snakeyaml</artifactId>
 			<version>1.15</version>
 		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

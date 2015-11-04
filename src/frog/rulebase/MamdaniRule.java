@@ -78,4 +78,12 @@ public class MamdaniRule implements Rule {
     public String toString() {
         return "{A: " + this.antecedent + ", C: " + this.consequent + "}";
     }
+
+    public List<? extends Proposition> getAntecedent() {
+        return antecedent;
+    }
+
+    public List<? extends LabelProposition> getConsequent() {
+        return consequent;
+    }
 }

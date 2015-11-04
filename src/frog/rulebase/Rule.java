@@ -5,5 +5,5 @@ import java.io.Serializable;
 /**
  * Represents a rule
  */
-public interface Rule extends Serializable {
+public interface Rule {
 }
