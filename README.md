@@ -16,14 +16,14 @@ To use the frog library you can use [JitPack](http://jitpack.io) adding the foll
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
-</repository
+</repository>
 ```
 and add this dependency for the last commit:
 ```xml
 <dependency>
     <groupId>com.github.citiususc</groupId>
     <artifactId>frog</artifactId>
-    <version>e41dda8</version>
+    <version>v1.0</version>
 </dependency>
 ```
 
