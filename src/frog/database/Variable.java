@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Characteristic or qualitie that the individuals of a population possess, 
  * expressed in numerical form, and with values between two numbers.
  */
-public class Variable {
+public class Variable implements Serializable {
 
     /**
      * Name of the variable.

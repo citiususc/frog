@@ -52,6 +52,6 @@ public class TSKInferenceTest extends TestCase {
     }
 
     public void testNormInference() {
-        assertEquals(1., TSKInference.normInference(kb, new double[]{2, 0})[0]);
+        assertEquals(1., TSKInference.normalizedInference(kb, new double[]{2, 0})[0]);
     }
 }
