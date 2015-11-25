@@ -108,7 +108,7 @@ public class TSKInference {
         int n_outputs = kb.database.outputs.length;
 
         double[] normInput = new double[input.length];
-        for (int j = 0; j < normInput.length; j++) normInput[j] = input[j] * kb.database.inputs[j].normStd + kb.database.inputs[j].normMean;
+        for (int j = 0; j < normInput.length; j++) normInput[j] = (input[j] - kb.database.inputs[j].normMean) /  kb.database.inputs[j].normStd;
 
         double[] result = new double[n_outputs];
         double norm = 0.;
