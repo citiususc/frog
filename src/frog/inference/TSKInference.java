@@ -126,7 +126,7 @@ public class TSKInference {
                 result[o] = Double.NaN;
             } else {
                 result[o] /= norm;
-                result[o] *= kb.database.outputs[o].normStd + kb.database.outputs[o].normMean;
+                result[o] = result[o]*kb.database.outputs[o].normStd + kb.database.outputs[o].normMean;
             }
         }
 

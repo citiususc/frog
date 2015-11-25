@@ -52,8 +52,8 @@ public class TSKRule implements Rule {
     }
 
     /**
-     * Degree of fullfilment of the rule. That is, the minimum t-norm over the
-     * degree of fullfilment of the antecedents.
+     * Degree of fulfillment of the rule. That is, the minimum t-norm over the
+     * degree of fulfillment of the antecedents.
      * @param data Array of input data, one for each antecedent
      * @param db DataBase where the information of the fuzzy sets is located
      */
