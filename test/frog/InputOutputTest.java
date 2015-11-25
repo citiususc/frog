@@ -60,7 +60,7 @@ public class InputOutputTest extends TestCase {
     	Yaml yaml = new Yaml();
 
         // YAML file loaded from resources folder
-    	String file = Thread.currentThread().getContextClassLoader().getResource("dataset-0.kb").getFile();
+    	String file = Thread.currentThread().getContextClassLoader().getResource("cool_load.kb").getFile();
     	FileInputStream input = new FileInputStream(file);
         Object obj = yaml.load(input);
         assertTrue(obj instanceof KnowledgeBase);
